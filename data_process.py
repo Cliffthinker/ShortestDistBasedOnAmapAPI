@@ -18,8 +18,8 @@ bus_df=pd.read_excel('公交站数据\\data.xlsx')
 bus=bus_df.values[:,1].tolist()
 bus_set=list(map(str2set,bus))
 
+i0=int(input('输入起始点：'))
 for it in range(50):
-    i0=7
     length = nx.dijkstra_path_length(graph,source=i0,target=it)
     path = nx.dijkstra_path(graph,source=i0,target=it)
     # nx.draw_networkx(graph)
@@ -36,5 +36,3 @@ for it in range(50):
         bus_path += str(bus_set[path[i]]&bus_set[path[i+1]])+'->'
     print('公交车换乘:',bus_path[0:len(bus_path)-2])
     print("-------------------------------------------------------------")
-
-        
